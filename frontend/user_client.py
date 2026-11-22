@@ -4,11 +4,11 @@ import sys
 import requests
 
 URL = "http://localhost:5000/api/users/register"
-EXPECTED = ("id", "email")
+EXPECTED = ("id", "email", "fullName")
 
 
-def register(email: str, password: str) -> dict | None:
-    payload = {"email": email, "password": password}
+def register(email: str, password: str, fullName: str) -> dict | None:
+    payload = {"email": email, "password": password, "fullName": fullName}
     print(f"POST {URL} {json.dumps(payload, ensure_ascii=False)}")
 
     try:
@@ -47,5 +47,5 @@ def register(email: str, password: str) -> dict | None:
 
 
 if __name__ == "__main__":
-    r = register("student@example.com", "password123")
+    r = register("student@example.com", "password123", "Manyapov Yarolsav")
     sys.exit(0 if r else 1)
